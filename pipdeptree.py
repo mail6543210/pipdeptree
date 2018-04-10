@@ -69,9 +69,7 @@ def sorted_tree(tree):
     :rtype: collections.OrderedDict
 
     """
-    return OrderedDict(sorted([(k, sorted(v, key=attrgetter('key')))
-                               for k, v in tree.items()],
-                              key=lambda kv: kv[0].key))
+    return OrderedDict([(k, sorted(v)) for k, v in sorted(tree.items())])
 
 
 def find_tree_root(tree, key):
