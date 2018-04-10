@@ -484,8 +484,8 @@ def cyclic_deps(tree):
     key_tree = dict((k.key, v) for k, v in tree.items())
     get_children = lambda n: key_tree.get(n.key, [])
     cyclic = []
-    for p, rs in tree.items():
-        for req in rs:
+    for p, rs in sorted(tree.items()):
+        for req in sorted(rs):
             if p.key in map(attrgetter('key'), get_children(req)):
                 cyclic.append((p, req, p))
     return cyclic
