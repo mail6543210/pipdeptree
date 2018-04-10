@@ -165,6 +165,9 @@ class Package(object):
     def __repr__(self):
         return '<{0}("{1}")>'.format(self.__class__.__name__, self.key)
 
+    def __lt__(self, rhs):
+        return self.key < rhs.key
+
 
 class DistPackage(Package):
     """Wrapper class for pkg_resources.Distribution instances
